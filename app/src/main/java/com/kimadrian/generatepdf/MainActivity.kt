@@ -20,10 +20,10 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
-    val STORAGE_CODE: Int = 400
+    private val STORAGECODE: Int = 400
 
     private lateinit var binding: ActivityMainBinding
-    val list: MutableList<String> = ArrayList()
+    private val list: MutableList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //viewBinding
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     //Permission was not granted, request it
                     val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     requestPermissions(
-                        permissions, STORAGE_CODE
+                        permissions, STORAGECODE
                     )
                 } else {
                     //Permission already granted, call save pdf method
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == STORAGE_CODE) {
+        if (requestCode == STORAGECODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 savePdf()
             } else {
